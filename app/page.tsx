@@ -19,13 +19,6 @@ import { useState } from 'react';
 export default function Home() {
   const [activeTab, setActiveTab] = useState('students');
 
-  const stats = [
-    { value: "2,500+", label: "Talented Students Identified" },
-    { value: "450+", label: "Global Opportunities Provided" },
-    { value: "£3.2M", label: "Sponsorship Mobilized" },
-    { value: "92%", label: "University Acceptance Rate" }
-  ];
-
   const opportunities = [
     {
       icon: Trophy,
@@ -86,10 +79,23 @@ export default function Home() {
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Star className="w-8 h-8 text-blue-600 fill-current" />
+            <div className="flex items-center space-x-3">
+              {/* Union Jack */}
+              <div className="w-10 h-6 relative flex-shrink-0">
+                <div className="absolute inset-0 bg-[#012169]"></div>
+                {/* White diagonal */}
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, transparent 40%, white 40%, white 60%, transparent 60%), linear-gradient(to top right, transparent 40%, white 40%, white 60%, transparent 60%)' }}></div>
+                {/* Red diagonal */}
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%), linear-gradient(to top right, transparent 45%, #C8102E 45%, #C8102E 55%, transparent 55%)' }}></div>
+                {/* White cross */}
+                <div className="absolute top-0 bottom-0 left-[45%] right-[45%] bg-white"></div>
+                <div className="absolute left-0 right-0 top-[40%] bottom-[40%] bg-white"></div>
+                {/* Red cross */}
+                <div className="absolute top-0 bottom-0 left-[47%] right-[47%] bg-[#C8102E]"></div>
+                <div className="absolute left-0 right-0 top-[43%] bottom-[43%] bg-[#C8102E]"></div>
+              </div>
               <h1 className="text-2xl font-bold">
-                <span className="text-blue-600">Brilliant</span>
+                <span className="text-[#012169]">Brilliant</span>
                 <span className="text-gray-900">Britain</span>
                 <span className="text-gray-500">.org</span>
               </h1>
@@ -100,7 +106,7 @@ export default function Home() {
               <a href="#opportunity" className="text-gray-700 hover:text-blue-600 transition">Opportunity</a>
               <a href="#sponsor" className="text-gray-700 hover:text-blue-600 transition">Sponsor</a>
               <a href="#impact" className="text-gray-700 hover:text-blue-600 transition">Impact</a>
-              <button className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">
+              <button className="px-6 py-2 bg-[#012169] text-white rounded-full hover:bg-[#010f49] transition">
                 Get Involved
               </button>
             </div>
@@ -109,7 +115,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 to-white py-20">
+      <section className="relative bg-gradient-to-br from-slate-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -119,7 +125,7 @@ export default function Home() {
           >
             <h2 className="text-5xl md:text-6xl font-bold mb-6">
               <span className="text-gray-900">Unlocking </span>
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#012169] to-[#C8102E] bg-clip-text text-transparent">
                 Extraordinary Potential
               </span>
               <br />
@@ -136,8 +142,8 @@ export default function Home() {
                 onClick={() => setActiveTab('students')}
                 className={`px-8 py-4 rounded-full font-semibold transition ${
                   activeTab === 'students' 
-                    ? 'bg-blue-600 text-white' 
-                    : 'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50'
+                    ? 'bg-[#012169] text-white' 
+                    : 'bg-white text-[#012169] border-2 border-[#012169] hover:bg-blue-50'
                 }`}
               >
                 I&apos;m a Student
@@ -146,8 +152,8 @@ export default function Home() {
                 onClick={() => setActiveTab('sponsors')}
                 className={`px-8 py-4 rounded-full font-semibold transition ${
                   activeTab === 'sponsors' 
-                    ? 'bg-purple-600 text-white' 
-                    : 'bg-white text-purple-600 border-2 border-purple-600 hover:bg-purple-50'
+                    ? 'bg-[#C8102E] text-white' 
+                    : 'bg-white text-[#C8102E] border-2 border-[#C8102E] hover:bg-red-50'
                 }`}
               >
                 I Want to Sponsor
@@ -168,33 +174,13 @@ export default function Home() {
 
         {/* Floating elements */}
         <div className="absolute top-20 left-10 opacity-20">
-          <Sparkles className="w-20 h-20 text-blue-600" />
+          <Sparkles className="w-20 h-20 text-[#012169]" />
         </div>
         <div className="absolute bottom-20 right-10 opacity-20">
-          <Trophy className="w-24 h-24 text-purple-600" />
+          <Trophy className="w-24 h-24 text-[#C8102E]" />
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center text-white"
-              >
-                <div className="text-3xl md:text-4xl font-bold mb-2">{stat.value}</div>
-                <div className="text-blue-100">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Three Layers Model */}
       <section className="py-20">
@@ -210,25 +196,25 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
               className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100"
             >
-              <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-[#012169] rounded-full flex items-center justify-center mb-6">
                 <Search className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4">1. Identification</h3>
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">•</span>
+                  <span className="text-[#012169] mr-2">•</span>
                   Partner with schools and community groups
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">•</span>
+                  <span className="text-[#012169] mr-2">•</span>
                   Spot talent in academics, arts, STEM, leadership
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">•</span>
+                  <span className="text-[#012169] mr-2">•</span>
                   Use competitions and tests as indicators
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-600 mr-2">•</span>
+                  <span className="text-[#012169] mr-2">•</span>
                   Allow teacher and peer nominations
                 </li>
               </ul>
@@ -240,25 +226,25 @@ export default function Home() {
               whileHover={{ scale: 1.02 }}
               className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100"
             >
-              <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-[#C8102E] rounded-full flex items-center justify-center mb-6">
                 <Globe className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4">2. Opportunity</h3>
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">•</span>
+                  <span className="text-[#C8102E] mr-2">•</span>
                   Global experiences beyond reach
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">•</span>
+                  <span className="text-[#C8102E] mr-2">•</span>
                   International competitions and festivals
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">•</span>
+                  <span className="text-[#C8102E] mr-2">•</span>
                   Study visits to world-class institutions
                 </li>
                 <li className="flex items-start">
-                  <span className="text-purple-600 mr-2">•</span>
+                  <span className="text-[#C8102E] mr-2">•</span>
                   Secured placements through partnerships
                 </li>
               </ul>
@@ -365,7 +351,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-20 bg-gradient-to-r from-[#012169] to-[#C8102E]">
         <div className="max-w-4xl mx-auto px-6 text-center text-white">
           <h2 className="text-4xl font-bold mb-6">
             Talent is Universal, Opportunity is Not
@@ -376,7 +362,7 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-white text-blue-600 rounded-full font-bold hover:bg-gray-100 transition flex items-center justify-center">
+            <button className="px-8 py-4 bg-white text-[#012169] rounded-full font-bold hover:bg-gray-100 transition flex items-center justify-center">
               Register Your School
               <School className="ml-2 w-5 h-5" />
             </button>
@@ -394,7 +380,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Star className="w-6 h-6 text-blue-400 fill-current" />
+                <Star className="w-6 h-6 text-[#C8102E] fill-current" />
                 <h3 className="text-xl font-bold">BrilliantBritain.org</h3>
               </div>
               <p className="text-gray-400">
