@@ -4,13 +4,8 @@ import { motion } from 'framer-motion';
 import { 
   Star, 
   Globe, 
-  Users, 
-  Award,
-  ArrowRight,
-  GraduationCap,
   Heart,
   Search,
-  Target,
   Sparkles,
   School,
   Rocket,
